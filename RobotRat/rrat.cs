@@ -252,26 +252,35 @@ public class RobotRat
                 } break; // end switch
 
             case PenPositions.DOWN:
+//                _floor[_previous_col, _previous_col] = 'P';
                 switch(_its_direction){
                     case Directions.NORTH:
+                        //_floor[_previous_row, _previous_col] = 'P';
                         while((_current_row > 0) && (spaces_to_move-- > 0)){
                             _floor[_current_row--, _current_col] = '^';
                         }
+                        _floor[_current_row, _current_col] = 'X';
                         break;
                     case Directions.SOUTH:
+                        //_floor[_previous_row, _previous_col] = 'P';
                         while((_current_row > 0) && (spaces_to_move-- > 0)){
                             _floor[_current_row++, _current_col] = 'v';
                         }
+                        _floor[_current_row, _current_col] = 'X';
                         break;
                     case Directions.EAST:
+                        //_floor[_previous_row, _previous_col] = 'P';
                         while((_current_col > 0) && (spaces_to_move-- > 0)){
                             _floor[_current_row, _current_col++] = '>';
                         }
+                        _floor[_current_row, _current_col] = 'X';
                         break;
                     case Directions.WEST:
+                        //_floor[_previous_row, _previous_col] = 'P';
                         while((_current_col > 0) && (spaces_to_move-- > 0)){
                             _floor[_current_row, _current_col--] = '<';
                         }
+                        _floor[_current_row, _current_col] = 'X';
                         break;
                 } break;
         }
@@ -284,7 +293,6 @@ public class RobotRat
         // if (_its_pen_position == PenPositions.DOWN){
         //     _floor[_previous_col, _previous_col] = 'P';
         //     _floor[_current_col, _current_col] = 'C';
-            
         // }
 
         string floor_border = "";
@@ -363,6 +371,8 @@ public class RobotRat
         Console.SetCursorPosition(currentCol, Console.CursorTop+1);
         Console.Write(border_sub);
         Console.SetCursorPosition(currentCol, Console.CursorTop+1);
+        Console.Write("                                                                                                   ");
+        Console.SetCursorPosition(currentCol, Console.CursorTop);
         Console.Write("Previous: (" + _previous_col + "," + _previous_row + ")" + "\tCurrent: (" +_current_col + "," + _current_row + ")");
         Console.SetCursorPosition(currentCol, Console.CursorTop+1);
         string direction_status = "";
